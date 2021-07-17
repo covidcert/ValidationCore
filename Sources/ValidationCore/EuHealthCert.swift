@@ -112,14 +112,16 @@ public struct Vaccination : Codable {
         self.vaccine = try container.decode(String.self, forKey: .vaccine).trimmingCharacters(in: .whitespacesAndNewlines)
         self.medicinialProduct = try container.decode(String.self, forKey: .medicinialProduct).trimmingCharacters(in: .whitespacesAndNewlines)
         self.marketingAuthorizationHolder = try container.decode(String.self, forKey: .marketingAuthorizationHolder).trimmingCharacters(in: .whitespacesAndNewlines)
-        self.doseNumber = try container.decode(UInt64.self, forKey: .doseNumber)
-        guard 1..<10 ~= doseNumber else {
-            throw ValidationError.CBOR_DESERIALIZATION_FAILED
-        }
-        self.totalDoses = try container.decode(UInt64.self, forKey: .totalDoses)
-        guard 1..<10 ~= totalDoses else {
-            throw ValidationError.CBOR_DESERIALIZATION_FAILED
-        }
+//        self.doseNumber = try container.decode(UInt64.self, forKey: .doseNumber)
+//        guard 1..<10 ~= doseNumber else {
+//            throw ValidationError.CBOR_DESERIALIZATION_FAILED
+//        }
+        self.doseNumber = 0 //TODO
+//        self.totalDoses = try container.decode(UInt64.self, forKey: .totalDoses)
+//        guard 1..<10 ~= totalDoses else {
+//            throw ValidationError.CBOR_DESERIALIZATION_FAILED
+//        }
+        self.totalDoses = 0 //TODO
         self.vaccinationDate = try container.decode(String.self, forKey: .vaccinationDate)
         guard vaccinationDate.isValidIso8601Date() else {
             throw ValidationError.CBOR_DESERIALIZATION_FAILED
